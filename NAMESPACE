@@ -2,5 +2,6 @@
 
 export(download_flair_data)
 export(get_flair_filenames)
+importFrom(kirby21.base,all_modalities)
 importFrom(kirby21.base,download_kirby21_data)
 importFrom(kirby21.base,get_image_filenames)

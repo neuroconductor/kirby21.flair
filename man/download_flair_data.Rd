@@ -16,6 +16,3 @@ Indicator if the data is downloaded.
 \description{
 Download the files for the FLAIR images
 }
-\examples{
-download_flair_data()
-}
