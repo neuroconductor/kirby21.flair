@@ -19,4 +19,3 @@ Return the filenames for the FLAIR images
 \examples{
 get_flair_filenames()
 }
-
