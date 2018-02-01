@@ -3,7 +3,7 @@
 #' @description Return the filenames for the FLAIR images
 #' @param ... arguments to pass to \code{\link{get_image_filenames}},
 #' \code{modalities = "FLAIR"} so it cannot be specified
-#' @return Vector fo filenames
+#' @return Vector of filenames
 #' 
 #' @examples
 #' get_flair_filenames()
