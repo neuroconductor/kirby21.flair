@@ -1,19 +1,19 @@
 Package: kirby21.flair
 Type: Package
-Title: Example FLAIR Structural Data from the Multi-Modal MRI Reproducibility
-        Resource
+Title: Example FLAIR Structural Data from the Multi-Modal MRI
+        Reproducibility Resource
 Version: 1.5.1
 Date: 2017-02-27
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: Structural fluid attenuation inversion recovery ('FLAIR') magnetic resonance imaging ('MRI') data from
-        the 'Kirby21' reproducibility study
-        <doi:10.1016/j.neuroimage.2010.11.047>.
+Description: Structural fluid attenuation inversion recovery ('FLAIR')
+        magnetic resonance imaging ('MRI') data from the 'Kirby21'
+        reproducibility study <doi:10.1016/j.neuroimage.2010.11.047>.
 License: GPL-2
 Imports: kirby21.base (>= 1.5)
 RoxygenNote: 6.0.1
 URL: https://www.nitrc.org/projects/multimodal/
 biocViews:
-Suggests: 
-    covr
-Remotes: neuroconductor/kirby21.base@7e6711e2922260b53fae7e294bb55705d4bab05c
+Suggests: covr
+Remotes:  
+    neuroconductor/kirby21.base@c9324f10968d5408ea1d312e45fa8acf0117895a

@@ -23,13 +23,14 @@ env:
   - DISPLAY=:99.0
 r_check_args: "--as-cran --install-args=--build"
 before_install:
+- ulimit -n 2048
 - export PROJ_DIR=`basename $PWD`
 - fname=travis_helpers.sh
 - wget -O ${fname} http://bit.ly/travis_helpers
 - cat ${fname}; source ${fname}; rm ${fname}
 - cat DESCRIPTION
 - start_xvfb ;
-- no_open_mp ;
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then no_open_mp ; fi
 - Rscript -e 'source("https://install-github.me/mangothecat/callr")'
 - remove_neuroc_packages
 - cat DESCRIPTION
@@ -56,7 +57,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: pRSN/yd50la6Sfd8DJf1kkWf4pra1PAqkGxO2yAFqPcnE+sC8mcRbTBJFnW/GrQT4k5aKaClq1Vnr1/KQifIpZn5VxlPUY2+N/7sxvTd5ClpRAvLlkglSuJIsla3xWkbRFCYLdSmAwizNYKZqV2fh0rqchd+f5qMS0M/K1DQ/6NTRzVa6sC6pgJNe0kIWWTNAF2Lr/DaBvxSKd3qg9puxnPspW/yHCClch/+9aCCLWLR+yoBrL3+0XiN+GI3Cj1K0NIL4wWGYHkT0/0KyiQuYN9NzFZefgVE+VRxzQZ6OC4fUSKx6/LtVJar/Hqmk71QVv3RLCutGCaxzggCosRvgCTLIpx1myD9pjP798IiGPdNrcq961AwVAm3AYTkub7eb1XYW7KPi1PEoDBn/i2BsbQUZGf89h7pv1+4M6ihGMf8tlsDu0owBVZ2w66OcrPkktJofmG/82Hb/eyDWHw2o8GIAeBm6Q00zdeVBGHpeCDdjoFI8YjmVybZvIDOumjrus2O4lyUJlpfGxJ3FqPzRQQFoCltWrQZkHgltKlbZUkBk2ZLqjUBqm5t48a1Fahn4yw9IvlHsbBxqkTuxwSZKsTO43BIF+5oEdyiPDK6QuNWGKozVX9XHBjoZotZFsSXwNmlLSGOn9RItu2pVgwKrkeRLW8ZSJnKd7pfGvxSCno=
+    secure: dYGY1mbRxYqIZoqj0CevaYi/ypujTgPMrnZxsK8Po+G4cqELPheYeXXKDEB9GLz7zdwvXxJkxlKHcQuF9j+bvMiu/oCWELMq4AGH5quYoBReGD5Qf2hStKR3PduXDql+4U2hxP0Y37hpX2FBcDyMxMgqcJ9NmbVleflY9zW87suXWOakIZn2TrRC+acvdyM+WYZURsiZXkkioGKxlzXFZL9GhHU7GtS5ld0+O8cjLmO1KoK292pPEAYfgfjgbgVp+HmaIzB0HuzsGJ9Qbj8lJp7SgFt06CLOZZ95aIS9rK4RSPECAJv+VysuPx03vukyy7NqWNP5zOZnLEPSW11jGx9A56rvgocW3wKh7knybWFeeyRCYxsEJ3ufQKiJLjvDkoVvJB+RnVG81AHCiKCjYMk/VU4KcjVQhGDfPXVM+TGb0mz/qzjpr4QpnrSjjFVDnpToDkWmzQM9/qmm968Vi8CpbnsDNl+kfDp4Joww2FJbNx54INFrgb9KzXzVdiuxOhaKPiGAbUZDeE2iPyOm4hONiGxn9ni9WcbQ6S+ZWQM6bVdQMaeAOvgwLBDgZ9Po8dk78pHrHZDTrqCMcHxmXRQAc0owSQK/7kGgg74B9ghL+aYMLlvIZTRmjFHH4jQvBPCdHf2SlZKIUr5BEry6Uxhy4Rr3y27sqh/UGR+YJtU=
 after_deploy:
-- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then travis_wait 100 Rscript -e 'covr::coveralls(type
-  = "all")' ; fi
+- if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then echo 'covr::coveralls(type = "all")'
+  > neuroc_covr.R ; travis_wait 100 Rscript neuroc_covr.R ; rm neuroc_covr.R ; fi
