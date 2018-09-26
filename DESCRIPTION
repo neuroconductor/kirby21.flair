@@ -14,9 +14,7 @@ Imports: kirby21.base (>= 1.7.0)
 RoxygenNote: 6.1.0
 URL: https://www.nitrc.org/projects/multimodal/
 Encoding: UTF-8
-Suggests: 
-    covr,
-    testthat
-Remotes:  
-    neuroconductor/kirby21.base@01c925d0baff0f61164ce95ad53d7bb352b1c09d
-biocViews: 
+Suggests: covr, testthat
+biocViews:
+Remotes: 
+    neuroconductor/kirby21.base@ee0d3bf2dc355900da122172081b3f4ac79b3419
