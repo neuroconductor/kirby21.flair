@@ -16,6 +16,5 @@ URL: https://www.nitrc.org/projects/multimodal/
 Encoding: UTF-8
 Suggests: covr, testthat
 biocViews:
-Repository: Neuroconductor
-Remotes: 
-    neuroconductor/kirby21.base@01c925d0baff0f61164ce95ad53d7bb352b1c09d
+Remotes:
+        neuroconductor/kirby21.base@ee0d3bf2dc355900da122172081b3f4ac79b3419
